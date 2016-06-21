@@ -172,7 +172,7 @@
     ows_require(udpSocket != nil);
     ows_require(errorHandler != nil);
 
-    TOCFutureSource *futureResultSource = [TOCFutureSource futureSourceUntil:untilCancelledToken];
+    __block TOCFutureSource *futureResultSource = [TOCFutureSource futureSourceUntil:untilCancelledToken];
 
     PacketHandlerBlock packetHandler = ^(id packet) {
       if (![futureResultSource trySetResult:packet]) {
